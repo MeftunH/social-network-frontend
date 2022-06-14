@@ -10,10 +10,11 @@ class UserSignupPage extends React.Component{
     }
 
     onChange = event => {
-        const value = event.target.value;
-        const field = event.target.name;
+//select event target name and value of target
+        const { name, value } = event.target;
+
         this.setState({
-            [field]: value
+            [name]: value
         });
     }
 
