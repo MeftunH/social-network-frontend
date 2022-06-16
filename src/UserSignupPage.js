@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 class UserSignupPage extends React.Component{
 
     state = {
@@ -16,6 +16,19 @@ class UserSignupPage extends React.Component{
         this.setState({
             [name]: value
         });
+    }
+
+    onClickSignUp = event => {
+    //stop form event browser default behavior
+    event.preventDefault();
+    
+    const body = {
+        username: this.state.username,
+        displayName: this.state.displayName,
+        password: this.state.password,
+    }
+
+    axios.post('http://localhost:8081/api/1.0/users', body)
     }
 
     render(){
@@ -38,7 +51,7 @@ class UserSignupPage extends React.Component{
                     <h1><label>Password Repeat</label></h1>
                     <input name="passwordRepeat" onChange={this.onChange} type="password"></input>
                     </div>
-                    <button>Sign Up</button>
+                    <button onClick={this.onClickSignUp}>Sign Up</button>
             </form>
         );
     }
