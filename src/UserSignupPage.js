@@ -31,7 +31,7 @@ class UserSignupPage extends React.Component{
         password,
     }
 
-    axios.post('http://localhost:8081/api/1.0/users', body)
+    axios.post('/api/1.0/users', body)
     }
 
     render(){
