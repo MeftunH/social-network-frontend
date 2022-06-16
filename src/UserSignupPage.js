@@ -36,26 +36,30 @@ class UserSignupPage extends React.Component{
 
     render(){
         return (
-            <form>
-                <h1>Sign Up</h1>
-                    <div>
+          <div className="container">
+              <form>
+                <h1 className='text-center'>Sign Up</h1>
+                    <div className='form-group'>
                     <h1><label>Username</label> </h1>
-                    <input name="username" onChange={this.onChange}></input>
+                    <input className='form-control' name="username" onChange={this.onChange}></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                     <h1><label>Display Name</label></h1>
-                    <input name="displayName" onChange={this.onChange}></input>
+                    <input className='form-control'  name="displayName" onChange={this.onChange}></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                     <h1><label>Password</label></h1>
-                    <input name="password" onChange={this.onChange} type="password"></input>
+                    <input className='form-control'  name="password" onChange={this.onChange} type="password"></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                     <h1><label>Password Repeat</label></h1>
-                    <input name="passwordRepeat" onChange={this.onChange} type="password"></input>
+                    <input className='form-control'  name="passwordRepeat" onChange={this.onChange} type="password"></input>
                     </div>
-                    <button onClick={this.onClickSignUp}>Sign Up</button>
+                    <div className='text-center'>
+                    <button className='btn btn-primary'  onClick={this.onClickSignUp}>Sign Up</button>
+                    </div>
             </form>
+          </div>
         );
     }
 }
