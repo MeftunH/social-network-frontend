@@ -43,6 +43,8 @@ class UserSignupPage extends React.Component{
     }
 
     render(){
+        const {pendingApiCall} = this.state;
+
         return (
           <div className="container">
               <form>
@@ -64,8 +66,8 @@ class UserSignupPage extends React.Component{
                     <input className='form-control'  name="passwordRepeat" onChange={this.onChange} type="password"></input>
                     </div>
                     <div className='text-center'>
-                    <button className='btn btn-primary' onClick={this.onClickSignUp} disabled={this.state.pendingApiCall}>
-                    {this.state.pendingApiCall && <span className="spinner-border spinner-border-sm"></span>}
+                    <button className='btn btn-primary' onClick={this.onClickSignUp} disabled={pendingApiCall}>
+                    {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>}
                     Sign Up</button>
                     </div>
             </form>
