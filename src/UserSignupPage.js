@@ -22,10 +22,13 @@ class UserSignupPage extends React.Component{
     //stop form event browser default behavior
     event.preventDefault();
     
+    const {username,displayName,password} = this.state;
+
+    //key:value pairs
     const body = {
-        username: this.state.username,
-        displayName: this.state.displayName,
-        password: this.state.password,
+        username,
+        displayName,
+        password,
     }
 
     axios.post('http://localhost:8081/api/1.0/users', body)
