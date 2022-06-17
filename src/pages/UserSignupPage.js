@@ -7,7 +7,7 @@ class UserSignupPage extends React.Component{
         displayName: null,
         password: null,
         passwordRepeat: null,
-        pendingApiCall: false,
+        pendingApiCalls: false,
     }
 
     onChange = event => {
@@ -31,19 +31,19 @@ class UserSignupPage extends React.Component{
         displayName,
         password,
     };
-    this.setState({pendingApiCall: true});
+    this.setState({pendingApiCalls: true});
 
 
     signup(body)
     .then((response) => {
-        this.setState({pendingApiCall: false});
+        this.setState({pendingApiCalls: false});
     }).catch(error => {
-        this.setState({pendingApiCall: false});
+        this.setState({pendingApiCalls: false});
     });
     }
 
     render(){
-        const {pendingApiCall} = this.state;
+        const {pendingApiCalls} = this.state;
 
         return (
           <div className="container">
@@ -66,8 +66,8 @@ class UserSignupPage extends React.Component{
                     <input className='form-control'  name="passwordRepeat" onChange={this.onChange} type="password"></input>
                     </div>
                     <div className='text-center'>
-                    <button className='btn btn-primary' onClick={this.onClickSignUp} disabled={pendingApiCall}>
-                    {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>}
+                    <button className='btn btn-primary' onClick={this.onClickSignUp} disabled={pendingApiCalls}>
+                    {pendingApiCalls && <span className="spinner-border spinner-border-sm"></span>}
                     Sign Up</button>
                     </div>
             </form>
