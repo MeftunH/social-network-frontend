@@ -1,0 +1,22 @@
+{
+  "name": "social-network-frontend",
+  "version": "1.0.0",
+  "description": "Social network frontedn",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeftunH/social-network-frontend.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Maftun Hashimli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MeftunH/social-network-frontend/issues"
+  },
+  "homepage": "https://github.com/MeftunH/social-network-frontend#readme"
+}
