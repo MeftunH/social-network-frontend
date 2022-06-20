@@ -26,7 +26,7 @@ class UserSignupPage extends React.Component {
         errors.passwordRepeat = undefined;
       }
     }
-    
+
       this.setState({
         [name]: value,
         errors
@@ -69,7 +69,7 @@ class UserSignupPage extends React.Component {
             <Input name="password" label="Password" error={password} onChange={this.onChange} type="password"></Input>
             <Input name="passwordRepeat" label="Password Repeat" error={passwordRepeat} onChange={this.onChange} type="password"></Input>
             <div className="text-center">
-              <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall}>
+              <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall || passwordRepeat !== undefined}>
                 {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up
               </button>
             </div>
