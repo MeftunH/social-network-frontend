@@ -12,4 +12,4 @@ return (
 );
 }
 
-export default Input
+export default Input;
