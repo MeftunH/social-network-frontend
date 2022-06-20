@@ -1,7 +1,7 @@
 import React from "react";
 import { signup } from "../api/apiCalls";
 import Input from "../components/Input";
-
+import { withTranslation } from "react-i18next";
 class UserSignupPage extends React.Component {
     state = {
       username: null,
@@ -80,4 +80,4 @@ class UserSignupPage extends React.Component {
     }
   }
   
-  export default UserSignupPage;
+  export default withTranslation()(UserSignupPage);
