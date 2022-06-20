@@ -68,6 +68,7 @@ class UserSignupPage extends React.Component {
             <Input name="displayName" label="Display Name" error={displayName} onChange={this.onChange}></Input>
             <Input name="password" label="Password" error={password} onChange={this.onChange} type="password"></Input>
             <Input name="passwordRepeat" label="Password Repeat" error={passwordRepeat} onChange={this.onChange} type="password"></Input>
+          
             <div className="text-center">
               <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall || passwordRepeat !== undefined}>
                 {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up
