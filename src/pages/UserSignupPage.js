@@ -1,5 +1,5 @@
 import React from "react";
-import { signup } from "../api/apiCalls";
+import { signup,changeLanguage } from "../api/apiCalls";
 import Input from "../components/Input";
 import { withTranslation } from "react-i18next";
 class UserSignupPage extends React.Component {
@@ -60,6 +60,7 @@ class UserSignupPage extends React.Component {
   onChangeLanguage = (language) => {
     const { i18n } = this.props;
     i18n.changeLanguage(language);
+    changeLanguage(language);
   };
 
   render() {
