@@ -7,12 +7,20 @@ i18n.use(initReactI18next).init({
         translations: {
             'Sign up': 'Sign up',
             'Passwords do not match': 'Passwords do not match',
+            'Username': 'Username',
+            'Display Name': 'Display Name',
+            'Password': 'Password',
+            'Password Repeat': 'Password Repeat',
         }
     },
     tr: {
         translations: {
             'Sign up': 'Kaydol',
             'Passwords do not match': 'Sifreler uyusmuyor',
+            'Username': 'Kullanici Adi',
+            'Display Name': 'Ad Soyad',
+            'Password': 'Sifre',
+            'Password Repeat': 'Sifre Tekrari',
         }
     },
     },

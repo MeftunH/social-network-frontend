@@ -65,10 +65,10 @@ class UserSignupPage extends React.Component {
         <div className="container">
           <form>
             <h1 className="text-center">{t('Sign up')}</h1>
-            <Input name="username" label="Username" error={username} onChange={this.onChange}></Input>
-            <Input name="displayName" label="Display Name" error={displayName} onChange={this.onChange}></Input>
-            <Input name="password" label="Password" error={password} onChange={this.onChange} type="password"></Input>
-            <Input name="passwordRepeat" label="Password Repeat" error={passwordRepeat} onChange={this.onChange} type="password"></Input>
+            <Input name="username" label={t("Username")} error={username} onChange={this.onChange}></Input>
+            <Input name="displayName" label={t("Display Name")} error={displayName} onChange={this.onChange}></Input>
+            <Input name="password" label={t("Password")} error={password} onChange={this.onChange} type="password"></Input>
+            <Input name="passwordRepeat" label={t("Password Repeat")} error={passwordRepeat} onChange={this.onChange} type="password"></Input>
           
             <div className="text-center">
               <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall || passwordRepeat !== undefined}>
