@@ -56,6 +56,11 @@ class UserSignupPage extends React.Component {
   
       this.setState({ pendingApiCall: false });
     };
+
+    onChangeLanguage = language => {
+        const { i18n } = this.props;
+        i18n.changeLanguage(language);
+    }
   
     render() {
       const { pendingApiCall, errors } = this.state;
@@ -74,6 +79,10 @@ class UserSignupPage extends React.Component {
               <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall || passwordRepeat !== undefined}>
                 {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} {t('Sign up')}
               </button>
+            </div>
+            <div>
+            <img src="https://flagcdn.com/24x18/gb-eng.png" onClick={()=>this.onChangeLanguage('en')}></img>
+            <img src="https://flagcdn.com/24x18/tr.png"  style={{paddingLeft: '5px'}} onClick={()=>this.onChangeLanguage('tr')}></img>
             </div>
           </form>
         </div>
