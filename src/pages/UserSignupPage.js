@@ -60,11 +60,11 @@ class UserSignupPage extends React.Component {
     render() {
       const { pendingApiCall, errors } = this.state;
       const { username,displayName,password,passwordRepeat } = errors;
-      
+      const {t} = this.props;
       return (
         <div className="container">
           <form>
-            <h1 className="text-center">{this.props.t('Sign up')}</h1>
+            <h1 className="text-center">{t('Sign up')}</h1>
             <Input name="username" label="Username" error={username} onChange={this.onChange}></Input>
             <Input name="displayName" label="Display Name" error={displayName} onChange={this.onChange}></Input>
             <Input name="password" label="Password" error={password} onChange={this.onChange} type="password"></Input>
@@ -72,7 +72,7 @@ class UserSignupPage extends React.Component {
           
             <div className="text-center">
               <button className="btn btn-primary" onClick={this.onClickSignup} disabled={pendingApiCall || passwordRepeat !== undefined}>
-                {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up
+                {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} {t('Sign up')}
               </button>
             </div>
           </form>
