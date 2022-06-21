@@ -7,11 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import UserSignupPage from './pages/UserSignupPage';
 import LoginPage from './pages/LoginPage';
 import './i18n';
+import LanguageSelector from './components/LanguageSelector';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LoginPage />
+    <LanguageSelector />
   </React.StrictMode>
 );
 
