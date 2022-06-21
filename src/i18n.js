@@ -5,10 +5,14 @@ i18n.use(initReactI18next).init({
     resources: {
     en: {
         translations: {
+            'Sign up': 'Sign up',
+            'Passwords do not match': 'Passwords do not match',
         }
     },
     tr: {
         translations: {
+            'Sign up': 'Kaydol',
+            'Passwords do not match': 'Sifreler uyusmuyor',
         }
     },
     },

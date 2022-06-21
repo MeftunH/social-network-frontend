@@ -19,9 +19,9 @@ class UserSignupPage extends React.Component {
 
       if(name === 'password' || name === 'passwordRepeat') {
       if(name === 'password' && value !== this.state.passwordRepeat) {
-        errors.passwordRepeat = 'Passwords do not match';
+        errors.passwordRepeat = this.props.t('Passwords do not match');
       } else if(name === 'passwordRepeat' && value !== this.state.password) {
-        errors.passwordRepeat = 'Passwords do not match';
+        errors.passwordRepeat = this.props.t('Passwords do not match');
       } else {
         errors.passwordRepeat = undefined;
       }
@@ -59,11 +59,11 @@ class UserSignupPage extends React.Component {
     render() {
       const { pendingApiCall, errors } = this.state;
       const { username,displayName,password,passwordRepeat } = errors;
-  
+      
       return (
         <div className="container">
           <form>
-            <h1 className="text-center">Sign Up</h1>
+            <h1 className="text-center">{this.props.t('Sign up')}</h1>
             <Input name="username" label="Username" error={username} onChange={this.onChange}></Input>
             <Input name="displayName" label="Display Name" error={displayName} onChange={this.onChange}></Input>
             <Input name="password" label="Password" error={password} onChange={this.onChange} type="password"></Input>
