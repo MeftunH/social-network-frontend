@@ -13,15 +13,16 @@ class UserSignupPage extends React.Component {
     };
   
     onChange = event => {
+      const {t} = this.props;
       const { name, value } = event.target;
       const errors = { ...this.state.errors };
       errors[name] = undefined;
 
       if(name === 'password' || name === 'passwordRepeat') {
       if(name === 'password' && value !== this.state.passwordRepeat) {
-        errors.passwordRepeat = this.props.t('Passwords do not match');
+        errors.passwordRepeat = t('Passwords do not match');
       } else if(name === 'passwordRepeat' && value !== this.state.password) {
-        errors.passwordRepeat = this.props.t('Passwords do not match');
+        errors.passwordRepeat = t('Passwords do not match');
       } else {
         errors.passwordRepeat = undefined;
       }
