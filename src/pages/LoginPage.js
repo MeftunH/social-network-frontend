@@ -2,17 +2,33 @@ import React, { Component } from "react";
 import Input from "../components/Input";
 import { withTranslation } from "react-i18next";
 import { login } from "../api/apiCalls";
+import axios from "axios";
 class LoginPage extends Component {
   state = {
     username: null,
     password: null,
     error: null,
+    pendingApiCall: false,
   };
 
   onChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value,error:null });
   };
+
+  componentDidMount() {
+  axios.interceptors.request.use((request)=>{
+    this.setState({pendingApiCall:true});
+    return request;
+  }) ;
+  axios.interceptors.response.use((response)=>{
+    this.setState({pendingApiCall:false});
+    return response;
+},(error)=>{
+    this.setState({pendingApiCall:false});
+     throw error;
+})
+}
 
   onClickLogin = async (event) => {
     event.preventDefault();
