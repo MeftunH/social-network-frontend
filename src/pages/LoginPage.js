@@ -21,6 +21,7 @@ class LoginPage extends Component {
       username,
       password,
     };
+    this.setState({ error: null });
     try {
       await login(creds);
     } catch (apiError) {
