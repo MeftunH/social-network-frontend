@@ -34,8 +34,8 @@ class LoginPage extends Component {
 
   render() {
     const { t } = this.props;
-    const buttonEnabled = this.state.username && this.state.password;
-
+    const {username,password,error} = this.state;
+    const buttonEnabled = username && password;
     return (
       <div className="container">
         <form>
@@ -50,7 +50,7 @@ class LoginPage extends Component {
             name="password"
             onChange={this.onChange}
           ></Input>
-         {this.state.error && <div className="alert alert-danger"> {this.state.error}</div>}
+         {this.state.error && <div className="alert alert-danger"> {error}</div>}
           <div className="text-center">
             <button className="btn btn-primary" onClick={this.onClickLogin} disabled={!buttonEnabled}>
               {t("Login")}
