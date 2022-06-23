@@ -13,22 +13,25 @@ class LoginPage extends Component {
 
   onChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value,error:null });
+    this.setState({ [name]: value, error: null });
   };
 
   componentDidMount() {
-  axios.interceptors.request.use((request)=>{
-    this.setState({pendingApiCall:true});
-    return request;
-  }) ;
-  axios.interceptors.response.use((response)=>{
-    this.setState({pendingApiCall:false});
-    return response;
-},(error)=>{
-    this.setState({pendingApiCall:false});
-     throw error;
-})
-}
+    axios.interceptors.request.use((request) => {
+      this.setState({ pendingApiCall: true });
+      return request;
+    });
+    axios.interceptors.response.use(
+      (response) => {
+        this.setState({ pendingApiCall: false });
+        return response;
+      },
+      (error) => {
+        this.setState({ pendingApiCall: false });
+        throw error;
+      }
+    );
+  }
 
   onClickLogin = async (event) => {
     event.preventDefault();
@@ -50,7 +53,7 @@ class LoginPage extends Component {
 
   render() {
     const { t } = this.props;
-    const {username,password,error} = this.state;
+    const { username, password, error } = this.state;
     const buttonEnabled = username && password;
     return (
       <div className="container">
@@ -66,9 +69,15 @@ class LoginPage extends Component {
             name="password"
             onChange={this.onChange}
           ></Input>
-         {this.state.error && <div className="alert alert-danger"> {error}</div>}
+          {this.state.error && (
+            <div className="alert alert-danger"> {error}</div>
+          )}
           <div className="text-center">
-            <button className="btn btn-primary" onClick={this.onClickLogin} disabled={!buttonEnabled}>
+            <button
+              className="btn btn-primary"
+              onClick={this.onClickLogin}
+              disabled={!buttonEnabled}
+            >
               {t("Login")}
             </button>
           </div>
