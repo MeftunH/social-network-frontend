@@ -1,42 +1,61 @@
-import React, { Component } from 'react'
-import Input from '../components/Input'
-import { withTranslation } from 'react-i18next';
-import {login} from '../api/apiCalls'
+import React, { Component } from "react";
+import Input from "../components/Input";
+import { withTranslation } from "react-i18next";
+import { login } from "../api/apiCalls";
 class LoginPage extends Component {
-    state = {
-        username: null,
-        password: null,
-    }
+  state = {
+    username: null,
+    password: null,
+    error: null,
+  };
 
-    onChange = (event) => {
+  onChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    }
+  };
 
-    onClickLogin = event => {
+  onClickLogin = async (event) => {
     event.preventDefault();
-    const {username,password} = this.state;
+    const { username, password } = this.state;
     const creds = {
-        username,
-        password,
+      username,
+      password,
+    };
+    try {
+      await login(creds);
+    } catch (apiError) {
+      //from axios
+      this.setState({
+        error: apiError.response.data.message,
+      });
     }
-    login(creds);
-    }
+  };
 
-    render() {
-        const { t } = this.props;
-        return (
-            <div className='container'>
-                <form>
-                    <h1 className='text-center'>{t('Login')}</h1>
-                    <Input label={t('Username')} name="username" onChange={this.onChange}></Input>
-                    <Input label={t('Password')} name="password" onChange={this.onChange}></Input>
-                    <div className='text-center'>
-                    <button className='btn btn-primary' onClick={this.onClickLogin}>{t('Login')}</button>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+  render() {
+    const { t } = this.props;
+    return (
+      <div className="container">
+        <form>
+          <h1 className="text-center">{t("Login")}</h1>
+          <Input
+            label={t("Username")}
+            name="username"
+            onChange={this.onChange}
+          ></Input>
+          <Input
+            label={t("Password")}
+            name="password"
+            onChange={this.onChange}
+          ></Input>
+         {this.state.error && <div className="alert alert-danger"> {this.state.error}</div>}
+          <div className="text-center">
+            <button className="btn btn-primary" onClick={this.onClickLogin}>
+              {t("Login")}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
-export default withTranslation()(LoginPage)
+export default withTranslation()(LoginPage);
