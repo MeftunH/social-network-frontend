@@ -5,10 +5,12 @@ import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
 import {HashRouter,Redirect,Route,Switch} from 'react-router-dom'
+import TopBar from "../components/TopBar";
 function App() {
   return (
     <div>
       <HashRouter>
+      <TopBar></TopBar>
       <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/login" exact component={LoginPage} />
