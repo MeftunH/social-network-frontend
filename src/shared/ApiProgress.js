@@ -30,7 +30,7 @@ export function withApiProgress(WrappedComponent,apiPath){
       }
     render() {
         const { pendingApiCall } = this.state;
-        return <WrappedComponent pendingApiCall={pendingApiCall}/>
+        return <WrappedComponent pendingApiCall={pendingApiCall} {...this.props}/>
     }
 }
 }
