@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
 export function withApiProgress(WrappedComponent,apiPath){
  return class  extends Component {
+    static displayName = 'ApiProgressHoc('+getDisplayName(WrappedComponent)+')';
+
     state ={
         pendingApiCall: false,
     };
