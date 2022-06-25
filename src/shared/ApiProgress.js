@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-class ApiProgress extends Component {
+export function withApiProgress(WrappedComponent,apiPath){
+ return class  extends Component {
     state ={
         pendingApiCall: false,
     };
@@ -23,18 +24,13 @@ class ApiProgress extends Component {
       };
 
       updateApiCallFor = (url,inProgress) =>{
-        if(url == this.props.path) {
+        if(url === apiPath) {
           this.setState({ pendingApiCall: inProgress });
         }
       }
     render() {
         const { pendingApiCall } = this.state;
-        return (
-            <div>
-                {React.cloneElement(this.props.children,{pendingApiCall})}
-            </div>
-        );
+        return <WrappedComponent pendingApiCall={pendingApiCall}/>
     }
 }
-
-export default ApiProgress;
+}
