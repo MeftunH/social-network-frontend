@@ -22,9 +22,10 @@ class ApiProgress extends Component {
         );
       };
     render() {
+        const { pendingApiCall } = this.state;
         return (
             <div>
-                {React.cloneElement(this.props.children,{pendingApiCall: this.state.pendingApiCall})}
+                {React.cloneElement(this.props.children,{pendingApiCall})}
             </div>
         );
     }
