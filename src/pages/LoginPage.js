@@ -53,8 +53,8 @@ class LoginPage extends Component {
   };
 
   render() {
-    const { t } = this.props;
-    const { username, password, error,pendingApiCall } = this.state;
+    const { t ,pendingApiCall} = this.props;
+    const { username, password, error} = this.state;
     const buttonEnabled = username && password;
     return (
       <div className="container">
