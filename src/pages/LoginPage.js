@@ -42,9 +42,13 @@ class LoginPage extends Component {
       username,
       password,
     };
+
+    const {push} = this.props.history;
+
     this.setState({ error: null });
     try {
       await login(creds);
+      push("/");
     } catch (apiError) {
       //from axios
       this.setState({
@@ -69,6 +73,7 @@ class LoginPage extends Component {
           <Input
             label={t("Password")}
             name="password"
+            type="password"
             onChange={this.onChange}
           ></Input>
           {this.state.error && (
