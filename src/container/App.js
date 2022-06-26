@@ -4,12 +4,12 @@ import LanguageSelector from "../components/LanguageSelector";
 import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
-import {HashRouter,Redirect,Route,Switch} from 'react-router-dom'
+import {HashRouter as Router,Redirect,Route,Switch} from 'react-router-dom'
 import TopBar from "../components/TopBar";
 function App() {
   return (
     <div>
-      <HashRouter>
+      <Router>
       <TopBar></TopBar>
       <Switch>
       <Route path="/" exact component={HomePage} />
@@ -18,7 +18,7 @@ function App() {
       <Route path="/user/:username" exact component={UserPage} />
       <Redirect to="/" />
       </Switch>
-      </HashRouter>
+      </Router>
       <LanguageSelector />
     </div>
   );
