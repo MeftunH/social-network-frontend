@@ -12,6 +12,7 @@ i18n.use(initReactI18next).init({
             'Password': 'Password',
             'Password Repeat': 'Password Repeat',
             'Login': 'Login',
+            'Logout': 'Logout',
         }
     },
     tr: {
@@ -23,6 +24,7 @@ i18n.use(initReactI18next).init({
             'Password': 'Sifre',
             'Password Repeat': 'Sifre Tekrari',
             'Login': 'Giris Yap',
+            'Logout': 'Cikis Yap',
         }
     },
     },
