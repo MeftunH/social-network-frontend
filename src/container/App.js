@@ -22,11 +22,11 @@ class App extends Component {
   }
 
  render() {
-  const {isLoggedIn,onLogoutSuccess,username} = this.state;
+  const {isLoggedIn,username} = this.state;
   return (
     <div>
       <Router>
-      <TopBar username={username} isLoggedIn={isLoggedIn} onLogoutSuccess={onLogoutSuccess}></TopBar>
+      <TopBar username={username} isLoggedIn={isLoggedIn} onLogoutSuccess={this.onLogoutSuccess}></TopBar>
       <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/login" exact component={(routerProps) => {
