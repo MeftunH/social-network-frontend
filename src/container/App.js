@@ -4,9 +4,14 @@ import LanguageSelector from "../components/LanguageSelector";
 import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
-import {HashRouter as Router,Redirect,Route,Switch} from 'react-router-dom'
+import {
+  HashRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import TopBar from "../components/TopBar";
-import { Component } from 'react';
+import { Component } from "react";
 class App extends Component {
   state = {
     isLoggedIn: false,
@@ -14,33 +19,48 @@ class App extends Component {
   };
 
   onLoginSuccess = (username) => {
-   this.setState({ isLoggedIn: true, username });
-  }
+    this.setState({ isLoggedIn: true, username });
+  };
 
   onLogoutSuccess = () => {
-  this.setState({ isLoggedIn: false, username: undefined });
-  }
+    this.setState({ isLoggedIn: false, username: undefined });
+  };
 
- render() {
-  const {isLoggedIn,username} = this.state;
-  return (
-    <div>
-      <Router>
-      <TopBar username={username} isLoggedIn={isLoggedIn} onLogoutSuccess={this.onLogoutSuccess}></TopBar>
-      <Switch>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/login" exact component={(routerProps) => {
-        return <LoginPage {...routerProps} onLoginSuccess={this.onLoginSuccess} />
-      }} />
-      <Route path="/signup" exact component={UserSignupPage} />
-      <Route path="/user/:username" exact component={UserPage} />
-      <Redirect to="/" />
-      </Switch>
-      </Router>
-      <LanguageSelector />
-    </div>
-  );
- }
+  render() {
+    const { isLoggedIn, username } = this.state;
+    return (
+      <div>
+        <Router>
+          <TopBar
+            username={username}
+            isLoggedIn={isLoggedIn}
+            onLogoutSuccess={this.onLogoutSuccess}
+          ></TopBar>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            {!isLoggedIn && (
+              <Route
+                path="/login"
+                exact
+                component={(routerProps) => {
+                  return (
+                    <LoginPage
+                      {...routerProps}
+                      onLoginSuccess={this.onLoginSuccess}
+                    />
+                  );
+                }}
+              />
+            )}
+            <Route path="/signup" exact component={UserSignupPage} />
+            <Route path="/user/:username" exact component={UserPage} />
+            <Redirect to="/" />
+          </Switch>
+        </Router>
+        <LanguageSelector />
+      </div>
+    );
+  }
 }
 
 export default App;
