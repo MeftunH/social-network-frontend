@@ -17,12 +17,16 @@ class App extends Component {
    this.setState({ isLoggedIn: true, username });
   }
 
+  onLogoutSuccess = () => {
+  this.setState({ isLoggedIn: false, username: undefined });
+  }
+
  render() {
-  const {isLoggedIn,username} = this.state;
+  const {isLoggedIn,onLogoutSuccess,username} = this.state;
   return (
     <div>
       <Router>
-      <TopBar username={username} isLoggedIn={isLoggedIn}></TopBar>
+      <TopBar username={username} isLoggedIn={isLoggedIn} onLogoutSuccess={onLogoutSuccess}></TopBar>
       <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/login" exact component={(routerProps) => {
