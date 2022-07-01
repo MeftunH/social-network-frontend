@@ -25,7 +25,9 @@ class App extends Component {
       <TopBar username={username} isLoggedIn={isLoggedIn}></TopBar>
       <Switch>
       <Route path="/" exact component={HomePage} />
-      <Route path="/login" exact component={LoginPage} />
+      <Route path="/login" exact component={(routerProps) => {
+        return <LoginPage {...routerProps} onLoginSuccess={this.onLoginSuccess} />
+      }} />
       <Route path="/signup" exact component={UserSignupPage} />
       <Route path="/user/:username" exact component={UserPage} />
       <Redirect to="/" />
