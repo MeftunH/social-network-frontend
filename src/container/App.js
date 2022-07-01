@@ -9,7 +9,7 @@ import TopBar from "../components/TopBar";
 import { Component } from 'react';
 class App extends Component {
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     username: "user1",
   };
 

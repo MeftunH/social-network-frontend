@@ -32,7 +32,7 @@ class TopBar extends Component {
                 {username}
               </Link>
             </li>
-            <li className="nav-link" onClick={onLogoutSuccess}>{t("Logout")}</li>
+            <li className="nav-link" onClick={onLogoutSuccess} style={{cursor:'pointer'}}>{t("Logout")}</li>
           </li>
         </ul>
       );
