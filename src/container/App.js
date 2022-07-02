@@ -14,7 +14,9 @@ import TopBar from "../components/TopBar";
 import { Component } from "react";
 class App extends Component {
   render() {
-    const { isLoggedIn, username } = this.state;
+    const isLoggedIn = false;
+    const username = undefined;
+    // const { isLoggedIn, username } = this.state;
     return (
       <div>
         <Router>
