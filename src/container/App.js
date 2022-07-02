@@ -34,9 +34,7 @@ class App extends Component {
               />
             )}
             <Route path="/signup" exact component={UserSignupPage} />
-            <Route path="/user/:username" exact component={props => {
-              return <UserPage {...props} username={username} />
-            }} />
+            <Route path="/user/:username" exact component={UserPage} />
             <Redirect to="/" />
           </Switch>
         </Router>
