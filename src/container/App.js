@@ -18,11 +18,7 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <TopBar
-            username={username}
-            isLoggedIn={isLoggedIn}
-            onLogoutSuccess={this.onLogoutSuccess}
-          ></TopBar>
+          <TopBar/>
           <Switch>
             <Route path="/" exact component={HomePage} />
             {!isLoggedIn && (
