@@ -13,19 +13,6 @@ import {
 import TopBar from "../components/TopBar";
 import { Component } from "react";
 class App extends Component {
-  state = {
-    isLoggedIn: false,
-    username: "user1",
-  };
-
-  onLoginSuccess = (username) => {
-    this.setState({ isLoggedIn: true, username });
-  };
-
-  onLogoutSuccess = () => {
-    this.setState({ isLoggedIn: false, username: undefined });
-  };
-
   render() {
     const { isLoggedIn, username } = this.state;
     return (
