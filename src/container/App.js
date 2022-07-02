@@ -27,14 +27,7 @@ class App extends Component {
               <Route
                 path="/login"
                 exact
-                component={(routerProps) => {
-                  return (
-                    <LoginPage
-                      {...routerProps}
-                      onLoginSuccess={this.onLoginSuccess}
-                    />
-                  );
-                }}
+                component={LoginPage} 
               />
             )}
             <Route path="/signup" exact component={UserSignupPage} />
