@@ -18,8 +18,6 @@ class App extends Component {
   static contextType=Authentication;
   render() {
     const isLoggedIn = this.context.state.isLoggedIn;
-    const username = undefined;
-    // const { isLoggedIn, username } = this.state;
     return (
       <div>
         <Router>
