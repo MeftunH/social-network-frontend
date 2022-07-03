@@ -8,6 +8,13 @@ class TopBar extends Component {
 
   // static contextType = Authentication;
 
+  onClickLogout = () => {
+    const action = {
+      type: "LOGOUT_SUCCESS",
+    };
+   this.props.dispatch(action);
+  }
+
   render() {
     const { t,isLoggedIn,username } = this.props;
     const onLogoutSuccess = ()=>{};
@@ -37,7 +44,7 @@ class TopBar extends Component {
                   </li>
                   <li
                     className="nav-link"
-                    onClick={onLogoutSuccess}
+                    onClick={this.onClickLogout}
                     style={{ cursor: "pointer" }}
                   >
                     {t("Logout")}
