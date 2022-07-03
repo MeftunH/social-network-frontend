@@ -4,11 +4,10 @@ import { withTranslation } from "react-i18next";
 import { login } from "../api/apiCalls";
 import axios from "axios";
 import ButtonWithProgress from "../components/ButtonWithProgress";
-import { withApiProgress } from './../shared/ApiProgress';
-import { Authentication } from './../shared/AuthenticationContext';
+import { withApiProgress } from "./../shared/ApiProgress";
+// import { Authentication } from './../shared/AuthenticationContext';
 class LoginPage extends Component {
-
-  static contextType=Authentication;
+  // static contextType=Authentication;
 
   state = {
     username: null,
@@ -42,13 +41,13 @@ class LoginPage extends Component {
   onClickLogin = async (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    const {onLoginSuccess}=this.context;
+    const { onLoginSuccess } = () => {};
     const creds = {
       username,
       password,
     };
 
-    const {push} = this.props.history;
+    const { push } = this.props.history;
 
     this.setState({ error: null });
     try {
@@ -57,8 +56,8 @@ class LoginPage extends Component {
 
       const authState = {
         ...response.data,
-        password
-      }
+        password,
+      };
 
       onLoginSuccess(authState);
     } catch (apiError) {
@@ -70,8 +69,8 @@ class LoginPage extends Component {
   };
 
   render() {
-    const { t ,pendingApiCall} = this.props;
-    const { username, password, error} = this.state;
+    const { t, pendingApiCall } = this.props;
+    const { username, password, error } = this.state;
     const buttonEnabled = username && password;
     return (
       <div className="container">
@@ -95,10 +94,9 @@ class LoginPage extends Component {
             <ButtonWithProgress
               onClick={this.onClickLogin}
               disabled={!buttonEnabled || pendingApiCall}
-              pendingApiCall = {pendingApiCall}
-              text = {t("Login")}
-            >
-            </ButtonWithProgress>
+              pendingApiCall={pendingApiCall}
+              text={t("Login")}
+            ></ButtonWithProgress>
           </div>
         </form>
       </div>
@@ -108,4 +106,4 @@ class LoginPage extends Component {
 
 const LoginPageWithTranslation = withTranslation()(LoginPage);
 
-export default withApiProgress(LoginPageWithTranslation,'/api/1.0/auth');
+export default withApiProgress(LoginPageWithTranslation, "/api/1.0/auth");

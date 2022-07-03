@@ -4,7 +4,7 @@ import LanguageSelector from "../components/LanguageSelector";
 import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
-import { Authentication } from "../shared/AuthenticationContext";
+// import { Authentication } from "../shared/AuthenticationContext";
 import {
   HashRouter as Router,
   Redirect,
@@ -15,9 +15,9 @@ import TopBar from "../components/TopBar";
 import { Component } from "react";
 
 class App extends Component {
-  static contextType=Authentication;
+  // static contextType=Authentication;
   render() {
-    const isLoggedIn = this.context.state.isLoggedIn;
+    const isLoggedIn = false;
     return (
       <div>
         <Router>
