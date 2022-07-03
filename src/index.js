@@ -5,13 +5,14 @@ import "./bootstrap-override.scss";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n";
 import App from "./container/App";
+import { Provider } from "react-redux";
 // import AuthenticationContext from "./shared/AuthenticationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-//   <AuthenticationContext>
+  <Provider>
     <App />
-//   </AuthenticationContext>
+   </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
