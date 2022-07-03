@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
+import { connect } from "react-redux";
 // import { Authentication } from "./../shared/AuthenticationContext";
 class TopBar extends Component {
 
   // static contextType = Authentication;
 
   render() {
+    console.log(this.props);
     const { t } = this.props;
     const onLogoutSuccess = ()=>{};
           const isLoggedIn =false;
@@ -62,5 +64,13 @@ class TopBar extends Component {
           );
         };
 }
+const TopBarWithTranslation = withTranslation()(TopBar);
 
-export default withTranslation()(TopBar);
+const mapStateToProps = (store) => {
+  return {
+      isLoggedIn: store.isLoggedIn,
+      username: store.username,
+  };
+}
+
+export default connect(mapStateToProps)(TopBarWithTranslation);
