@@ -9,12 +9,8 @@ class TopBar extends Component {
   // static contextType = Authentication;
 
   render() {
-    console.log(this.props);
-    const { t } = this.props;
+    const { t,isLoggedIn,username } = this.props;
     const onLogoutSuccess = ()=>{};
-          const isLoggedIn =false;
-          const username=undefined;
-
           let links = (
             <ul className="navbar-nav ml-auto">
               <li>
