@@ -26,7 +26,7 @@ const defaultState = {
 };
 
 //give last state and action to reducer
-const reducer = (state, action) => {
+const reducer = (state = { ...defaultState}, action) => {
   if (action.type === "LOGOUT_SUCCESS") {
     return defaultState;
   }
