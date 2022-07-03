@@ -6,11 +6,26 @@ import reportWebVitals from "./reportWebVitals";
 import "./i18n";
 import App from "./container/App";
 import { Provider } from "react-redux";
+import { createStore} from "redux";
 // import AuthenticationContext from "./shared/AuthenticationContext";
 
+
+const loggedInState =  {
+    isLoggedIn: true,
+    username: "user1",
+    displayName: "user1_dn",
+    image: null,
+    password: "P4ssword*",
+  };
+
+//give last state and action to reducer
+const reducer = (state,reducer) => {
+ return state;
+}
+const store = createStore(reducer,loggedInState);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider>
+  <Provider store={store}>
     <App />
    </Provider>
 );
