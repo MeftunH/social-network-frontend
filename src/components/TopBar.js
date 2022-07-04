@@ -3,17 +3,8 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
-// import { Authentication } from "./../shared/AuthenticationContext";
 import { logoutSuccess } from './../redux/authActions';
 class TopBar extends Component {
-
-  // static contextType = Authentication;
-
-  // onClickLogout = () => {
-  
-  //  this.props.dispatch(logoutSuccess());
-  // }
-
   render() {
     const { t,isLoggedIn,username,onLogoutSuccess } = this.props;
           let links = (
