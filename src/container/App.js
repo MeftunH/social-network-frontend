@@ -4,7 +4,7 @@ import LanguageSelector from "../components/LanguageSelector";
 import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
-// import { Authentication } from "../shared/AuthenticationContext";
+import { connect } from "react-redux/es/exports";
 import {
   HashRouter as Router,
   Redirect,
@@ -42,4 +42,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (store) => {
+  return {
+      isLoggedIn: store.isLoggedIn
+  };
+}
+
+export default connect(mapStateToProps)(App);
