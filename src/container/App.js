@@ -1,7 +1,6 @@
 import UserSignupPage from "../pages/UserSignupPage";
 import LoginPage from "../pages/LoginPage";
 import LanguageSelector from "../components/LanguageSelector";
-import ApiProgress from "../shared/ApiProgress";
 import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
 import { connect } from "react-redux/es/exports";
