@@ -1,3 +1,4 @@
+import * as ACTIONS from './Constants'
 
 const defaultState = {
     isLoggedIn: false,
@@ -9,9 +10,9 @@ const defaultState = {
   
   //give last state and action to reducer
   const authReducer = (state = { ...defaultState}, action) => {
-    if (action.type === "LOGOUT_SUCCESS") {
+    if (action.type === ACTIONS.LOGOUT_SUCCESS) {
       return defaultState;
-    } else if (action.type === "LOGIN_SUCCESS") {
+    } else if (action.type === ACTIONS.LOGIN_SUCCESS) {
       return{
         ... action.payload,
         isLoggedIn: true,

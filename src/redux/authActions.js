@@ -1,12 +1,14 @@
+import * as ACTIONS from './Constants'
+
 export const logoutSuccess = () => {
  return {
-    type: "LOGOUT_SUCCESS",
+    type: ACTIONS.LOGOUT_SUCCESS,
  }
 }
 
 export const loginSuccess = (authState) => {
     return {
-        type: "LOGIN_SUCCESS",
+        type: ACTIONS.LOGIN_SUCCESS,
         payload: authState,
     }
 }
