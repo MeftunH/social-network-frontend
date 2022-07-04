@@ -17,7 +17,7 @@ import { Component } from "react";
 class App extends Component {
   // static contextType=Authentication;
   render() {
-    const isLoggedIn = false;
+    const {isLoggedIn} = this.props;
     return (
       <div>
         <Router>
