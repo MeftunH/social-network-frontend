@@ -4,20 +4,18 @@ import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
 import { connect } from "react-redux";
 // import { Authentication } from "./../shared/AuthenticationContext";
+import { logoutSuccess } from './../redux/authActions';
 class TopBar extends Component {
 
   // static contextType = Authentication;
 
-  onClickLogout = () => {
-    const action = {
-      type: "LOGOUT_SUCCESS",
-    };
-   this.props.dispatch(action);
-  }
+  // onClickLogout = () => {
+  
+  //  this.props.dispatch(logoutSuccess());
+  // }
 
   render() {
-    const { t,isLoggedIn,username } = this.props;
-    const onLogoutSuccess = ()=>{};
+    const { t,isLoggedIn,username,onLogoutSuccess } = this.props;
           let links = (
             <ul className="navbar-nav ml-auto">
               <li>
@@ -44,7 +42,7 @@ class TopBar extends Component {
                   </li>
                   <li
                     className="nav-link"
-                    onClick={this.onClickLogout}
+                    onClick={onLogoutSuccess}
                     style={{ cursor: "pointer" }}
                   >
                     {t("Logout")}
@@ -76,4 +74,12 @@ const mapStateToProps = (store) => {
   };
 }
 
-export default connect(mapStateToProps)(TopBarWithTranslation);
+const mapDispatchToProps = (dispatch) => {
+ return {
+  onLogoutSuccess: () => {
+    return dispatch(logoutSuccess());
+  }
+ }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TopBarWithTranslation);
