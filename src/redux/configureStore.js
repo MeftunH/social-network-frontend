@@ -1,19 +1,26 @@
 import { createStore } from "redux";
 import authReducer from './authReducer';
 
-const loggedInState = {
-    isLoggedIn: true,
-    username: "user1",
-    displayName: "user1_dn",
-    image: null,
-    password: "P4ssword*",
-  };
-
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
   
 const configureStore = () => {
- 
-  const store =  createStore(authReducer, loggedInState,devtools);  
+
+  const socialAppAuth = localStorage.getItem("SOCIAL_APP_AUTH");
+
+  let stateInLocalStorage = {
+    isLoggedIn: false,
+    username: undefined,
+    displayName: undefined,
+    image: undefined,
+    password: undefined,
+  };
+
+  if (socialAppAuth) {
+    stateInLocalStorage = JSON.parse(socialAppAuth);
+  }
+
+
+  const store =  createStore(authReducer,stateInLocalStorage,devtools);  
   //calls on all state changes
   store.subscribe(() => {
    localStorage.setItem('SOCIAL_APP_AUTH',JSON.stringify(store.getState()));
