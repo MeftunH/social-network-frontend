@@ -16,7 +16,13 @@ const configureStore = () => {
   };
 
   if (socialAppAuth) {
+    
+    try {
     stateInLocalStorage = JSON.parse(socialAppAuth);
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
 
