@@ -1,11 +1,14 @@
 import { createStore } from "redux";
 import authReducer from './authReducer';
+import SecureLS from "secure-ls";
+ 
+const ls = new SecureLS({ encodingType: "aes" });
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
   
 
 const getStateFromLocalStorage = () => {
-  const socialAppAuth = localStorage.getItem("SOCIAL_APP_AUTH");
+  const socialAppAuth = ls.get("SOCIAL_APP_AUTH");
 
   let stateInLocalStorage = {
     isLoggedIn: false,
@@ -15,20 +18,14 @@ const getStateFromLocalStorage = () => {
     password: undefined,
   };
 
-  if (socialAppAuth) {
-    
-    try {
-    stateInLocalStorage = JSON.parse(socialAppAuth);
-    } catch (error) {
-      console.log(error);
-    }
-    return stateInLocalStorage;
+  if (socialAppAuth) {    
+    return socialAppAuth;
 }
+return stateInLocalStorage;
 };
 const updateStateInLocalStorage = newState => {
-  localStorage.setItem('SOCIAL_APP_AUTH',JSON.stringify(newState.getState()));
+  ls.set("SOCIAL_APP_AUTH", newState);
 }
-
 
 const configureStore = () => {
 
