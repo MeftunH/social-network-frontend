@@ -3,8 +3,8 @@ import authReducer from './authReducer';
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
   
-const configureStore = () => {
 
+const getStateFromLocalStorage = () => {
   const socialAppAuth = localStorage.getItem("SOCIAL_APP_AUTH");
 
   let stateInLocalStorage = {
@@ -22,16 +22,22 @@ const configureStore = () => {
     } catch (error) {
       console.log(error);
     }
+    return stateInLocalStorage;
+}
+};
+const updateStateInLocalStorage = newState => {
+  localStorage.setItem('SOCIAL_APP_AUTH',JSON.stringify(newState.getState()));
+}
 
-  }
 
+const configureStore = () => {
 
-  const store =  createStore(authReducer,stateInLocalStorage,devtools);  
+  const store =  createStore(authReducer,getStateFromLocalStorage(),devtools);  
   //calls on all state changes
   store.subscribe(() => {
-   localStorage.setItem('SOCIAL_APP_AUTH',JSON.stringify(store.getState()));
+    updateStateInLocalStorage(store.getState());
   });
   return store;
-}
+};
 
 export default configureStore;
