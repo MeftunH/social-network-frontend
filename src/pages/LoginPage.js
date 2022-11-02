@@ -48,6 +48,7 @@ class LoginPage extends Component {
       password,
     };
 
+    const { history, dispatch } = this.props;
     const { push } = this.props.history;
 
     this.setState({ error: null });
@@ -59,7 +60,7 @@ class LoginPage extends Component {
         ...response.data,
         password,
       };
-      this.props.onLoginSuccess(authState);
+      dispatch(loginSuccess(authState));
     } catch (apiError) {
       //from axios
       this.setState({
