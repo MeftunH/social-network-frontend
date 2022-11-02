@@ -14,5 +14,13 @@ export const loginSuccess = (authState) => {
 };
 
 export const loginHandler = (creds) => {
-login(creds);
+  return  function(dispatch){
+
+    const response =  login(creds); 
+    const authState = {
+     ...response.data,
+     password,
+   };
+   dispatch(loginSuccess(authState));
+    }
 }
