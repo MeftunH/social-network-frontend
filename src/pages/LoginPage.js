@@ -58,10 +58,9 @@ class LoginPage extends Component {
         ...response.data,
         password,
       };
-      push("/");
-
-    
       dispatch(loginSuccess(authState));
+      push("/");
+    
     } catch (apiError) {
       //from axios
       this.setState({
