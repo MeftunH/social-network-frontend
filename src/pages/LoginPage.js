@@ -105,15 +105,6 @@ class LoginPage extends Component {
 }
 
 const LoginPageWithTranslation = withTranslation()(LoginPage);
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLoginSuccess: (authState) => {
-      return dispatch(loginSuccess(authState));
-    },
-  };
-};
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(withApiProgress(LoginPageWithTranslation, "/api/1.0/auth"));
+
+export default connect(withApiProgress(LoginPageWithTranslation, "/api/1.0/auth"));
