@@ -53,13 +53,14 @@ class LoginPage extends Component {
 
     this.setState({ error: null });
     try {
-      const response = await login(creds);
-      push("/");
-
-      const authState = {
+      const response = await login(creds); 
+       const authState = {
         ...response.data,
         password,
       };
+      push("/");
+
+    
       dispatch(loginSuccess(authState));
     } catch (apiError) {
       //from axios
