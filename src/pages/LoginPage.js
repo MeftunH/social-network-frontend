@@ -8,6 +8,7 @@ import { withApiProgress } from "./../shared/ApiProgress";
 // import { Authentication } from './../shared/AuthenticationContext';
 import { connect } from "react-redux";
 import { loginSuccess } from "../redux/authActions";
+import { loginHandler } from './../redux/authActions';
 class LoginPage extends Component {
   // static contextType=Authentication;
 
@@ -53,6 +54,7 @@ class LoginPage extends Component {
 
     this.setState({ error: null });
     try {
+     await dispatch(loginHandler(creds));
       // const response = await login(creds); 
       //  const authState = {
       //   ...response.data,

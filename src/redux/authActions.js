@@ -14,7 +14,7 @@ export const loginSuccess = (authState) => {
 };
 
 export const loginHandler = (creds) => {
-  return  function(dispatch){
+  return async  function(dispatch){
 
     const response =  login(creds); 
     const authState = {
