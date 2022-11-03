@@ -16,11 +16,12 @@ export const loginSuccess = (authState) => {
 export const loginHandler = (creds) => {
   return async  function(dispatch){
 
-    const response =  login(creds); 
+    const response = await login(creds); 
     const authState = {
      ...response.data,
-     password,
+     password: creds.password,
    };
    dispatch(loginSuccess(authState));
+   return response;
     }
 }
