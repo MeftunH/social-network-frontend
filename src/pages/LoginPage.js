@@ -65,9 +65,9 @@ class LoginPage extends Component {
     
     } catch (apiError) {
       //from axios
-      this.setState({
-        error: apiError.response.data.message,
-      });
+      // this.setState({
+      //   error: apiError.response.data.message,
+      // });
     }
   };
 

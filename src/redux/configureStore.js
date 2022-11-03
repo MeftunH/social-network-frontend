@@ -1,7 +1,8 @@
 import { createStore } from "redux";
 import authReducer from './authReducer';
 import SecureLS from "secure-ls";
- 
+import thunk from 'redux-thunk';
+
 const ls = new SecureLS({ encodingType: "aes" });
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
