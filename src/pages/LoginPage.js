@@ -55,12 +55,6 @@ class LoginPage extends Component {
     this.setState({ error: null });
     try {
      await dispatch(loginHandler(creds));
-      // const response = await login(creds); 
-      //  const authState = {
-      //   ...response.data,
-      //   password,
-      // };
-      // dispatch(loginSuccess(authState));
       push("/");
     
     } catch (apiError) {
