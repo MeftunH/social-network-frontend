@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import Input from "../components/Input";
 import { withTranslation } from "react-i18next";
-import { login } from "../api/apiCalls";
 import axios from "axios";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import { withApiProgress } from "./../shared/ApiProgress";
 // import { Authentication } from './../shared/AuthenticationContext';
 import { connect } from "react-redux";
-import { loginSuccess } from "../redux/authActions";
 import { loginHandler } from './../redux/authActions';
 class LoginPage extends Component {
   // static contextType=Authentication;
