@@ -48,6 +48,24 @@ class UserSignupPage extends React.Component {
 
     try {
       const response = await signup(body);
+      const creds = {
+        username,
+        password,
+      };
+  
+      const { history, dispatch } = this.props;
+      const { push } = this.props.history;
+  
+      this.setState({ error: null });
+      try {
+       await dispatch(loginHandler(creds));
+        push("/");
+      
+      } catch (apiError) {
+        this.setState({
+          error: apiError.response.data.message,
+        });
+      }
     } catch (error) {
       if (error.response.data.validationErrors) {
         this.setState({ errors: error.response.data.validationErrors });
