@@ -48,7 +48,7 @@ class UserSignupPage extends React.Component {
 
     try {
       const response = await signup(body);
-      const creds = {
+      const credentials = {
         username,
         password,
       };
@@ -58,7 +58,7 @@ class UserSignupPage extends React.Component {
   
       this.setState({ error: null });
       try {
-       await dispatch(loginHandler(creds));
+       await dispatch(loginHandler(credentials));
         push("/");
       
       } catch (apiError) {
