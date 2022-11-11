@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import { withTranslation } from "react-i18next";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import { withApiProgress } from "../shared/ApiProgress";
-import { loginHandler } from './../redux/authActions';
+import { signupHandler } from './../redux/authActions';
 class UserSignupPage extends React.Component {
   state = {
     username: null,
@@ -39,6 +39,9 @@ class UserSignupPage extends React.Component {
   onClickSignup = async (event) => {
     event.preventDefault();
 
+    const { history, dispatch } = this.props;
+    const { push } = this.props.history;
+
     const { username, displayName, password } = this.state;
 
     const body = {
@@ -48,25 +51,7 @@ class UserSignupPage extends React.Component {
     };
 
     try {
-      const response = await signup(body);
-      const credentials = {
-        username,
-        password,
-      };
-  
-      const { history, dispatch } = this.props;
-      const { push } = this.props.history;
-  
-      this.setState({ error: null });
-      try {
-       await dispatch(loginHandler(credentials));
-        push("/");
-      
-      } catch (apiError) {
-        this.setState({
-          error: apiError.response.data.message,
-        });
-      }
+      await dispatch(signupHandler(body));
     } catch (error) {
       if (error.response.data.validationErrors) {
         this.setState({ errors: error.response.data.validationErrors });
