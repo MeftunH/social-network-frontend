@@ -52,6 +52,7 @@ class UserSignupPage extends React.Component {
 
     try {
       await dispatch(signupHandler(body));
+      push("/");
     } catch (error) {
       if (error.response.data.validationErrors) {
         this.setState({ errors: error.response.data.validationErrors });
