@@ -5,6 +5,7 @@ import { withTranslation } from "react-i18next";
 import ButtonWithProgress from "../components/ButtonWithProgress";
 import { withApiProgress } from "../shared/ApiProgress";
 import { signupHandler } from './../redux/authActions';
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 class UserSignupPage extends React.Component {
   state = {
     username: null,
